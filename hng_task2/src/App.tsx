@@ -1,3 +1,5 @@
+import Footer from "./Components/Footer"
+import Header from "./Components/Header"
 import MovieCard from "./Components/MovieCard"
 
 function App() {
@@ -5,7 +7,9 @@ function App() {
 
   return (
     <>
+      <Header/>
       <MovieCard/>
+      <Footer/>
     </>
   )
 }
