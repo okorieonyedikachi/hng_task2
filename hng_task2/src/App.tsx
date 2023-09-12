@@ -1,17 +1,15 @@
-import Footer from "./Components/Footer"
-import Header from "./Components/Header"
-import MovieCard from "./Components/MovieCard"
+import Header from "./Components/Header";
+import MovieCard from "./Components/MovieCard";
+import Footer from "./Components/Footer";
 
 function App() {
- 
-
   return (
     <>
-      <Header/>
-      <MovieCard/>
-      <Footer/>
+      <Header />
+      <MovieCard />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
