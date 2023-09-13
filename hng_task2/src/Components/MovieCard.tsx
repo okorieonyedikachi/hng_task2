@@ -66,7 +66,7 @@ function MovieCard () : MovieCardProps  {
             </div>
             <p
               id="movietitle"
-              className="mt-4  font-bold"
+              className="mt-4  font-bold text-lg"
               data-testid="movie-title"
             >
               {movie?.original_title}
@@ -80,7 +80,11 @@ function MovieCard () : MovieCardProps  {
               {movie?.release_date}
             </p>
             </div>
-            <p>{movie?.popularity}</p>
+            <div className="flex items-center gap-2 mt-2">
+              <p>Popularity:</p>
+              <p>{movie?.popularity}</p>
+            </div>
+            
           </div>
 
           </Link>
