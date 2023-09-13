@@ -1,6 +1,7 @@
 // import Poster from "../assets/images/Poster Image.png";
 import { Link } from "react-router-dom";
-import favBtn from "../assets/icons/Favorite.svg";
+import { LikeIcon } from "../assets/icons/Favorite";
+// import favBtn from "../assets/icons/Favorite.svg";
 import { useState, useEffect } from "react";
 
 interface MovieProp {
@@ -12,6 +13,8 @@ interface MovieProp {
 }
 const MovieCard = () => {
   const [movies, setMovies] = useState<MovieProp[]>([]);
+  const [toggle, setToggle] = useState(false);
+
   const options = {
     method: "GET",
     headers: {
@@ -22,7 +25,6 @@ const MovieCard = () => {
   };
 
   useEffect(() => {
-    // Fetch movie data from TMDB API and set it to the 'movies' state
     fetch(
       "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
       options
@@ -31,8 +33,6 @@ const MovieCard = () => {
       .then((data) => setMovies(data.results.slice(0, 10)))
       .catch((err) => console.error(err));
   });
-
-  // console.log(movies);
 
   return (
     <div className="flex justify-center font-custom">
@@ -44,26 +44,27 @@ const MovieCard = () => {
           {movies?.length > 0 &&
             movies.map((movie) => {
               return (
-                <Link to={`/movies/${movie.id}`}>
-                  <div
-                    id="movie-card"
-                    className="w-60 h-max"
-                    data-testid="movie-card"
-                  >
-                    <div className="w-full h-80">
-                      <img
-                        id="movie-poster"
-                        className=""
-                        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                        data-testid="movie-poster"
-                        alt="movie-poster"
-                      />
-                    </div>
-                    <div className="w-full bg-green-400 flex justify-end">
-                      <button className="pr-2">
-                        <img src={favBtn} />
-                      </button>
-                    </div>
+                <div
+                  id="movie-card"
+                  className="w-60 h-max"
+                  data-testid="movie-card"
+                >
+                  <div className="w-full h-80">
+                    <img
+                      id="movie-poster"
+                      className=""
+                      src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                      data-testid="movie-poster"
+                      alt="movie-poster"
+                    />
+                  </div>
+                  <div className="w-full flex justify-end">
+                    <button className="pr-2" onClick={() => setToggle(!toggle)}>
+                      <LikeIcon onLike={toggle} />
+                      {/* <img src={LikeIcon} /> */}
+                    </button>
+                  </div>
+                  <Link to={`/movies/${movie.id}`}>
                     <p
                       id="movietitle"
                       className="mt-4  font-bold text-lg"
@@ -84,8 +85,8 @@ const MovieCard = () => {
                       <p>Popularity:</p>
                       <p>{movie?.popularity}</p>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               );
             })}
         </article>
