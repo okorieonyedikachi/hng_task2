@@ -1,4 +1,4 @@
-import Poster from "../assets/images/Rectangle 29.png";
+// import Poster from "../assets/images/Rectangle 29.png";
 import Logo from "../assets/icons/Logo.svg"
 import HomeIcon from "../assets/icons/Home.svg"
 import Projector from "../assets/icons/Movie Projector.svg"
@@ -10,10 +10,18 @@ import List from "../assets/icons/List.svg"
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+interface DetailsProp {
+  overview: string;
+  runtime: number;
+  release_date: string;
+  title: string;
+  backdrop_path: string;
+}
+
 const MovieDetails = () => {
   const { id } = useParams()
 
-  const [details, setDetails] = useState([])
+  const [details, setDetails] = useState<DetailsProp>([])
 
   const options = {
     method: 'GET',
