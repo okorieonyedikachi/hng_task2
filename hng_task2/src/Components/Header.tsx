@@ -4,13 +4,13 @@ import Imdb from "../assets/icons/imdb.svg"
 import Tomato from "../assets/icons/tomato.svg"
 import Play from "../assets/icons/Play.svg"
 import Modal from "./Modal";
-import React, { useState, useEffect } from "react";
+import { useState} from "react";
 
 const Header = () => {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false)
-  // const [input, setInput] = useState
+  
  
 
   const handleInputChange = (event) => {
