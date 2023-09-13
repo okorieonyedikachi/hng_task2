@@ -1,9 +1,10 @@
 // import Poster from "../assets/images/Poster Image.png";
+import { Link } from "react-router-dom";
 import favBtn from "../assets/icons/Favorite.svg";
 import { useState, useEffect } from "react";
 
 interface MovieCardProps {
-  movies: {
+  movie: {
     original_title: string;
     release_date: number;
     popularity: string;
@@ -12,6 +13,7 @@ interface MovieCardProps {
 }
 
 function MovieCard () : MovieCardProps  {
+
   const [movies, setMovies] = useState([]);
   const options = {
     method: "GET",
@@ -31,7 +33,7 @@ function MovieCard () : MovieCardProps  {
       .then((response) => response.json())
       .then((data) => setMovies(data.results.slice(0, 10)))
       .catch((err) => console.error(err));
-  }, );
+  } );
 
   // console.log(movies);
   
@@ -46,7 +48,8 @@ function MovieCard () : MovieCardProps  {
           {movies?.map((movie)=> {
            
            return(
-            <div key={movie.id}  id="movie-card" className="w-60 h-max" data-testid="movie-card">
+            <Link to={`/movies/${movie.id}`}>
+            <div id="movie-card" className="w-60 h-max" data-testid="movie-card">
             <div className="w-full h-80">
               <img
                 id="movie-poster"
@@ -79,10 +82,13 @@ function MovieCard () : MovieCardProps  {
             </div>
             <p>{movie?.popularity}</p>
           </div>
+
+          </Link>
            )
           })}
         </article>
       </div>
+    
     </div>
 
   );
