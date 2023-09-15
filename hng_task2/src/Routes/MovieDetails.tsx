@@ -21,7 +21,8 @@ interface DetailsProp {
 const MovieDetails = () => {
   const { id } = useParams()
 
-  const [details, setDetails] = useState<DetailsProp>([])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [details, setDetails] = useState<DetailsProp | any>([])
 
   const options = {
     method: 'GET',
