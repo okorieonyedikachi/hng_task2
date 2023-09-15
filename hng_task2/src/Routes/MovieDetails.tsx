@@ -15,8 +15,8 @@ interface DetailsProp {
   runtime: number;
   release_date: string;
   title: string;
-  backdrop_path: string;
-}
+  backdrop_path: string; 
+} 
 
 const MovieDetails = () => {
   const { id } = useParams()
