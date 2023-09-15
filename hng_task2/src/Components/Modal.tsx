@@ -1,14 +1,29 @@
-// import { useState } from "react";
 import { useEffect, useState } from "react";
 import Poster from "../assets/images/Poster Image.png";
 
 
 const Modal = () => {
-    // const [input, setInput] = useState("")
+  const [searchData, setSearchData] = useState([])
 
-    // useEffect(()=> {
-       
-    // })
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NTg3MzA4NmU5OWY0Y2MxNWE4MmUwMmViOGI1NWE0MyIsInN1YiI6IjY0ZmY2ZTEyMGJiMDc2MDBjNGEwYjA2YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.KQR4dRwsELAkFyiXAD1AtUa53XuGqYlEbr0Gr3ENp0o'
+    }
+  };
+
+  useEffect(() => {
+    const searchRequest = () => { 
+      fetch(`https://api.themoviedb.org/3/search/movie?query=${}`, options)
+        .then(response => response.json())
+        .then((data) => setSearchData(data))
+        .catch(err => console.error(err));
+    }
+    console.log(searchData);
+    
+  })
+  
   return (
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 font-custom">
       <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -18,7 +33,7 @@ const Modal = () => {
         </button>
 
         <div className=" overflow-y-auto mt-10 h-full text-black">
-          {/* {results.map((result, index) => ( */}
+          
           <div className="mb- h-24 flex items-center gap-4">
             <div className="h-24 max-sm:h-24 ">
               <img src={Poster} alt="" className="w-24 h-full object-scale-down" />
@@ -30,7 +45,7 @@ const Modal = () => {
           </div>
           <hr className="mb-3" />
 
-          {/* //   ))} */}
+          
         </div>
       </div>
     </div>

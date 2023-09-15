@@ -11,6 +11,24 @@ const Header = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false)
   
+
+  async function fetchMovieData(query) {
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=YOUR_API_KEY&query=${query}`
+      );
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data = await response.json();
+      return data.results;
+    } catch (error) {
+      console.error('Error fetching movie data:', error);
+      return [];
+    }
+  }
  
 
   const handleInputChange = (event) => {
