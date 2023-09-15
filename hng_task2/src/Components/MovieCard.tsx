@@ -32,7 +32,7 @@ const MovieCard = () => {
       .then((data) => setMovies(data.results.slice(0, 10)))
       .catch((err) => console.error(err));
   });
-
+// remove duplicate Ids when liking a movie
   function removeDuplicates<MovieProp>(
     arr: MovieProp[],
     prop: keyof MovieProp
