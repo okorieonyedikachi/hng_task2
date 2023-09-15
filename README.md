@@ -2,7 +2,7 @@
 
 This is a movie discovery web application that allows users to search for movies, view movie details, and save their favorite movies. It consumes movie data from the TMDB API.
 
-![Screenshot of Movie Discovery App](./hng_task2/public/screenshot.jpg)
+(./hng_task2/public/screenshot.jpg)
 
 ## Table of Contents
 
